@@ -48,35 +48,55 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `assentos` - Number - cinco por padrão
 - `quantidadePessoas` - Number - zero por padrão
 */
-?
+var carro = {
+    marca: 'fiat',
+    modelo: 'palio',
+    placa : 'ASV-000',
+    ano : 2018,
+    cor : 'verde',
+    quantasPortas : 4,
+    assentos : 5,
+    quantidadePessoas : 0
+};
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
 passado por parâmetro.
 */
-?
+function mudaCor(cor) {
+    carro.cor = cor;
+};
 
 /*
 Crie um método chamado `obterCor`, que retorne a cor do carro.
 */
-?
+function obterCor (){
+    return carro.cor;
+};
 
 /*
 Crie um método chamado `obterModelo` que retorne o modelo do carro.
 */
-?
+function obterModelo() {
+    return carro.modelo;
+};
 
 /*
 Crie um método chamado `obterMarca` que retorne a marca do carro.
 */
-?
+function obterMarca(){
+    return carro.marca;
+};
 
 /*
 Crie um método chamado `obterMarcaModelo`, que retorne:
 "Esse carro é um [MARCA] [MODELO]"
 Para retornar os valores de marca e modelo, utilize os métodos criados.
 */
-?
+function obterMarcaModelo() {
+    return 'Esse carro é um ' + obterMarca() + ' ' + obterModelo();
+}
+
 
 /*
 Crie um método que irá adicionar pessoas no carro. Esse método terá as
@@ -94,7 +114,19 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 - Se couber somente mais uma pessoa, mostrar a palavra "pessoa" no retorno
 citado acima, no lugar de "pessoas".
 */
-?
+function adicionaPessoa(quantidade) {
+    if (carro.quantidadePessoas == 5) {
+        return "O carro já está lotado!";
+    } else if((carro.quantidadePessoas + quantidade) > 5) {
+        if((5 - carro.quantidadePessoas) == 1) {
+            return "Só cabem mais 1 pessoa!"; 
+        } else {
+            return "Só cabem mais " + (5 - carro.quantidadePessoas) + " pessoas!"; 
+        }        
+    }
+    carro.quantidadePessoas += quantidade;
+    return 'Já temos ' + carro.quantidadePessoas + ' pessoas no carro!';
+}
 
 /*
 Agora vamos verificar algumas informações do carro. Para as respostas abaixo,
@@ -104,38 +136,38 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-?
+carro.obterCor(); //verde
 
 // Mude a cor do carro para vermelho.
-?
+carro.mudaCor('vermelho'); //
 
 // E agora, qual a cor do carro?
-?
+carro.obterCor(); //vermelho
 
 // Mude a cor do carro para verde musgo.
-?
+carro.mudaCor('verde musgo'); //
 
 // E agora, qual a cor do carro?
-?
+carro.obterCor(); //verde musgo
 
 // Qual a marca e modelo do carro?
-?
+carro.obterMarcaModelo(); //Esse carro é um fiat palio
 
 // Adicione 2 pessoas no carro.
-?
+carro.adicionaPessoa(2); //Ja temos duas pessoas no carro
 
 // Adicione mais 4 pessoas no carro.
-?
+carro.adicionaPessoa(4); //Só cabem mais 3 pessoas"
 
 // Faça o carro encher.
-?
+carro.adicionaPessoa(3); //Já temos 5 pessoas no carro!
 
 // Tire 4 pessoas do carro.
-?
+carro.quantidadePessoas -= 4; //1
 
 // Adicione 10 pessoas no carro.
-?
+carro.adicionaPessoa(10); //Só cabem mais 4 pessoas!
 
 // Quantas pessoas temos no carro?
-?
+console.log(carro.quantidadePessoas); // 1
 ```
